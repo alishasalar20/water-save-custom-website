@@ -2,32 +2,421 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Navbar container */
+#navbar {
+  display: flex;
+  width: 100%;
+  height: 3.5rem; /* Equivalent to h-14 in Tailwind */
+  background-color: #1e3a8a; /* bg-blue-950 */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem; /* For spacing on smaller screens */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* Logo styling */
+#logo {
+  color: white;
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600; /* font-semibold */
+  font-family: 'Serif', serif; /* font-serif */
+  margin-left: 2rem;
+}
+
+/* Navigation links container */
+#nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem; /* Equivalent to gap-6 in Tailwind */
+  margin-right: 3rem;
+  font-weight: bold; /* font-bold */
+  font-family: 'Serif', serif; /* font-serif */
+  font-size: 1rem; /* text-1xl */
+  color: white;
+}
+
+/* Navigation links styling */
+#nav-links li {
+  list-style: none;
+}
+
+#nav-links li a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+#nav-links li:hover a {
+  text-decoration: underline;
+  color: #3b82f6; /* hover:text-blue-500 */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  #logo {
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  #nav-links {
+    flex-direction: column;
+    margin-right: 0;
+    gap: 0.75rem; /* Reduce gap on smaller screens */
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@media (max-width: 480px) {
+  #logo {
+    font-size: 1.25rem; /* Slightly smaller text */
+  }
+
+  #nav-links {
+    font-size: 0.875rem; /* Smaller font size for links */
+  }
+}
+/* Hero Section Container */
+#hero-section {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  height: 100vh; /* Full-screen height */
+  background-color: #bfdbfe; /* bg-blue-200 */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@media (min-width: 768px) {
+  #hero-section {
+    flex-direction: row; /* Reverse stacking for larger screens */
   }
+}
+
+/* Left Section */
+#hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem; /* Equivalent to px-8 */
+}
+
+@media (min-width: 768px) {
+  #hero-left {
+    padding: 4rem; /* Equivalent to md:px-16 */
+  }
+}
+
+/* Hero Heading */
+#hero-heading {
+  color: white;
+  font-family: 'Serif', serif; /* Font style */
+  font-weight: 600; /* font-semibold */
+  font-size: 2.25rem; /* Equivalent to text-4xl */
+  line-height: 1.5; /* Adjust leading */
+}
+
+@media (min-width: 768px) {
+  #hero-heading {
+    font-size: 3.75rem; /* Equivalent to md:text-6xl */
+  }
+}
+
+/* Right Section */
+#hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem; /* Equivalent to p-8 */
+}
+
+@media (min-width: 768px) {
+  #hero-right {
+    padding: 0; /* Remove padding for larger screens */
+  }
+}
+
+/* Hero Image */
+#hero-image {
+  object-fit: contain;
+  width: 100%;
+  max-width: 20rem; /* Equivalent to max-w-sm */
+}
+
+@media (min-width: 768px) {
+  #hero-image {
+    max-width: 35rem; /* Equivalent to md:max-w-lg */
+  }
+}
+/* Info Section */
+#info-section {
+  background-color: #bfdbfe; /* bg-blue-200 */
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem; /* px-6 and py-10 */
+}
+
+@media (min-width: 768px) {
+  #info-section {
+    padding: 2rem 4rem; /* md:px-16 */
+  }
+}
+
+/* Heading */
+#info-heading {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 800; /* font-extrabold */
+  font-family: 'Serif', serif;
+  color: #1e3a8a; /* text-blue-900 */
+  text-align: center;
+  margin-bottom: 2rem; /* mb-8 */
+}
+
+@media (min-width: 768px) {
+  #info-heading {
+    font-size: 2.25rem; /* md:text-4xl */
+  }
+}
+
+/* Content Section */
+#info-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 80rem; /* max-w-5xl */
+}
+
+@media (min-width: 768px) {
+  #info-content {
+    flex-direction: row;
+  }
+}
+
+/* Text Content */
+#info-text {
+  flex: 1;
+  color: #2563eb; /* text-blue-600 */
+  font-family: 'Serif', serif;
+  font-size: 1rem; /* text-lg */
+  line-height: 1.75; /* leading-relaxed */
+}
+
+@media (min-width: 768px) {
+  #info-text {
+    font-size: 1.25rem; /* md:text-xl */
+  }
+}
+
+#info-text p {
+  margin-top: 1rem; /* mt-4 */
+}
+
+/* Image Section */
+#info-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem; /* mt-8 */
+}
+
+@media (min-width: 768px) {
+  #info-image {
+    margin-top: 0;
+    margin-left: 2rem; /* md:ml-8 */
+  }
+}
+
+#info-image img {
+  object-fit: contain;
+}
+/* Footer Container */
+#footer {
+  background-color: #222;
+  color: #fff;
+  padding: 1.25rem 0; /* pt-5 pb-5 */
+  text-align: center;
+}
+
+/* Footer Content Container */
+#footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem; /* gap-3 */
+}
+
+/* Footer Title */
+#footer-title {
+  font-size: 1.8rem; /* text-[1.8rem] */
+  margin: 0;
+  color: #f39c12; /* text-[#f39c12] */
+}
+
+/* Footer Links */
+#footer-links {
+  display: flex;
+  gap: 20px; /* gap-[20px] */
+}
+
+/* Link Styling */
+#footer-links a {
+  color: #fff;
+  text-decoration: none; /* no-underline */
+  font-size: 1.2rem; /* text-[1.2rem] */
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease-in-out; /* transition-colors duration-300 ease-in-out */
+}
+
+/* Icon Styling */
+#footer-links i {
+  margin-right: 0.25rem; /* mr-1 */
+  font-size: 1.4rem; /* text-[1.4rem] */
+  color: #f39c12;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Hover Effects */
+#footer-links a:hover i {
+  color: #ffcc00; /* Brighter yellow for hover */
+}
+/* Main Section */
+#method-section {
+  background-color: #bfdbfe; /* bg-blue-100 */
+  width: 100%;
+  min-height: 100vh;
+  padding: 2.5rem 1.5rem; /* px-6 py-10 */
+}
+
+@media (min-width: 768px) {
+  #method-section {
+    padding: 2.5rem 4rem; /* md:px-16 */
+  }
+}
+
+/* Why Save Water Section */
+#why-save-water {
+  text-align: center;
+  max-width: 64rem; /* max-w-4xl */
+  margin: 0 auto;
+}
+
+#why-title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: bold;
+  margin-bottom: 1rem; /* mb-4 */
+  font-family: 'Serif', serif;
+  color: #1e3a8a; /* text-blue-900 */
+}
+
+#why-description {
+  color: #2563eb; /* text-blue-600 */
+  font-family: 'Serif', serif;
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75; /* leading-relaxed */
+}
+
+/* Ways to Save Water Section */
+#ways-to-save {
+  margin-top: 2.5rem; /* mt-10 */
+  max-width: 64rem; /* max-w-4xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ways-title {
+  font-size: 1.875rem; /* text-3xl */
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1.5rem; /* mb-6 */
+  font-family: 'Serif', serif;
+  color: #1e3a8a; /* text-blue-900 */
+}
+
+#ways-list {
+  list-style-type: disc;
+  margin-left: 1.5rem; /* ml-6 */
+  color: #2563eb; /* text-blue-600 */
+  font-family: 'Serif', serif;
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75; /* leading-relaxed */
+}
+
+@media (min-width: 768px) {
+  #ways-list {
+    margin-left: 3rem; /* md:ml-12 */
+  }
+}
+
+/* Global Impact Section */
+#global-impact {
+  margin-top: 2.5rem; /* mt-10 */
+  text-align: center;
+  max-width: 64rem; /* max-w-4xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#impact-title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 600;
+  margin-bottom: 1.5rem; /* mb-6 */
+  font-family: 'Serif', serif;
+  color: #1e3a8a; /* text-blue-900 */
+}
+
+#impact-description {
+  color: #2563eb; /* text-blue-600 */
+  font-family: 'Serif', serif;
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75; /* leading-relaxed */
+}
+
+/* Take Action Section */
+#take-action {
+  margin-top: 2.5rem; /* mt-10 */
+  text-align: center;
+  max-width: 64rem; /* max-w-4xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#action-title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 600;
+  margin-bottom: 1.5rem; /* mb-6 */
+  font-family: 'Serif', serif;
+  color: #1e3a8a; /* text-blue-900 */
+}
+
+#action-description {
+  color: #2563eb; /* text-blue-600 */
+  font-family: 'Serif', serif;
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75; /* leading-relaxed */
+}
+
+/* Image Section */
+#water-image {
+  margin-top: 2.5rem; /* mt-10 */
+  display: flex;
+  justify-content: center;
+}
+
+#water-image img {
+  width: 100%;
+  max-width: 64rem; /* max-w-4xl */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
 }
